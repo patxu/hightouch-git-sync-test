@@ -1,0 +1,10 @@
+name: Snowflake random numbers
+source: snowflake
+type: raw_sql
+rawSql: |-
+  SELECT 
+      ROW_NUMBER() OVER (ORDER BY 1) AS id,
+      UNIFORM(1, 10, RANDOM()) AS random_number
+  FROM 
+      TABLE(GENERATOR(ROWCOUNT => 10));
+primaryKey: ID

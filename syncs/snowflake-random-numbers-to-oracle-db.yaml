@@ -1,0 +1,20 @@
+model: snowflake-random-numbers
+destination: oracle-db
+config:
+  mode: upsert
+  object: SNOWFLAKE_TEST
+  mappings:
+    - to: STRING_NON_NULLABLE
+      from: RANDOM_NUMBER
+      type: standard
+  batchSize: 1000
+  configVersion: 0
+  overrideConfig: {}
+  externalIdMapping:
+    to: ID
+    from: ID
+schedule:
+  type: cron
+  schedule:
+    expression: '* * * * *'
+schedulePaused: false
